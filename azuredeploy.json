@@ -44,7 +44,7 @@
     "variables": {},
     "resources": [
         {
-            "apiVersion": "2015-01-01",
+            "apiVersion": "2018-05-01",
             "name": "master-resources1",
             "type": "Microsoft.Resources/deployments",
             "properties": {
@@ -70,7 +70,7 @@
             }
         },
         {
-            "apiVersion": "2015-01-01",
+            "apiVersion": "2018-05-01",
             "name": "master-resources2",
             "type": "Microsoft.Resources/deployments",
             "properties": {
