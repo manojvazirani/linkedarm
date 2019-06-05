@@ -6,24 +6,11 @@
             "defaultValue": "vm-ch0005-wus",
             "type": "String"
         },
-        "publicIPAddresses_ip_name": {
-            "defaultValue": "ip-ch0005-wus",
-            "type": "String"
-        },
-        "virtualNetworks_vnet_name": {
-            "defaultValue": "vnet-ch0005-wus",
-            "type": "String"
-        },
-        "networkInterfaces_nic_name": {
-            "defaultValue": "nic-ch0005-wus",
+        "networkInterfaces_nic_id": {
             "type": "String"
         },
         "availabilitySets_avset_name": {
             "defaultValue": "avset-ch0005-wus",
-            "type": "String"
-        },
-        "subnets_subnet_name": {
-            "defaultValue": "subnet-ch0005-wus",
             "type": "String"
         }
     },
@@ -53,8 +40,7 @@
             "name": "[parameters('virtualMachines_vm_name')]",
             "location": "westus",
             "dependsOn": [
-                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_avset_name'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic_name'))]"
+                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_avset_name'))]"
             ],
             "properties": {
                 "availabilitySet": {
@@ -96,7 +82,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic_name'))]",
+                            "id": "[parameters('networkInterfaces_nic_id')]",
                             "properties": {
                                 "primary": true
                             }

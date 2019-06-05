@@ -31,7 +31,7 @@
             "metadata": {
                 "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
             },
-            "defaultValue": "https://raw.githubusercontent.com/Microsoft"
+            "defaultValue": "https://raw.githubusercontent.com/manojvazirani/linkedarm/master/"
         },
         "_artifactsLocationSasToken": {
             "type": "securestring",
@@ -83,8 +83,8 @@
                     "virtualMachines_vm_name": {
                         "value": "[parameters('virtualMachines_vm_name')]"
                     },
-                    "networkInterfaces_nic_name": {
-                        "value": "[parameters('networkInterfaces_nic_name')]"
+                    "networkInterfaces_nic_id": {
+                        "value": "[reference('master-resources1').outputs.networkInterfaces_nic_id.value]"
                     },
                     "availabilitySets_avset_name": {
                         "value": "[parameters('availabilitySets_avset_name')]"
@@ -92,6 +92,5 @@
                 }
             }
         }
-    ],
-    "outputs": {}
+    ]
 }

@@ -2,10 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "virtualMachines_vm_name": {
-            "defaultValue": "vm-ch0005-wus",
-            "type": "String"
-        },
         "publicIPAddresses_ip_name": {
             "defaultValue": "ip-ch0005-wus",
             "type": "String"
@@ -16,10 +12,6 @@
         },
         "networkInterfaces_nic_name": {
             "defaultValue": "nic-ch0005-wus",
-            "type": "String"
-        },
-        "availabilitySets_avset_name": {
-            "defaultValue": "avset-ch0005-wus",
             "type": "String"
         },
         "subnets_subnet_name": {
@@ -80,7 +72,6 @@
                 "enableVmProtection": false
             }
         },
-
         {
             "type": "Microsoft.Network/virtualNetworks/subnets",
             "apiVersion": "2019-02-01",
@@ -138,5 +129,11 @@
                 "tapConfigurations": []
             }
         }
-    ]
+    ],
+    "outputs": {
+        "networkInterfaces_nic_id": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic_name'))]"
+        }
+    }
 }
