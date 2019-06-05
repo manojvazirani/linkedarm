@@ -1,0 +1,97 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_vm_name": {
+            "defaultValue": "vm-ch0005-wus",
+            "type": "String"
+        },
+        "publicIPAddresses_ip_name": {
+            "defaultValue": "ip-ch0005-wus",
+            "type": "String"
+        },
+        "virtualNetworks_vnet_name": {
+            "defaultValue": "vnet-ch0005-wus",
+            "type": "String"
+        },
+        "networkInterfaces_nic_name": {
+            "defaultValue": "nic-ch0005-wus",
+            "type": "String"
+        },
+        "availabilitySets_avset_name": {
+            "defaultValue": "avset-ch0005-wus",
+            "type": "String"
+        },
+        "subnets_subnet_name": {
+            "defaultValue": "subnet-ch0005-wus",
+            "type": "String"
+        },
+        "_artifactsLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
+            },
+            "defaultValue": "https://raw.githubusercontent.com/Microsoft"
+        },
+        "_artifactsLocationSasToken": {
+            "type": "securestring",
+            "metadata": {
+                "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
+            },
+            "defaultValue": ""
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "2015-01-01",
+            "name": "master-resources1",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('_artifactsLocation'), 'master-resources1.json', parameters('_artifactsLocationSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "publicIPAddresses_ip_name": {
+                        "value": "[parameters('publicIPAddresses_ip_name')]"
+                    },
+                    "virtualNetworks_vnet_name": {
+                        "value": "[parameters('virtualNetworks_vnet_name')]"
+                    },
+                    "networkInterfaces_nic_name": {
+                        "value": "[parameters('networkInterfaces_nic_name')]"
+                    },
+                    "subnets_subnet_name": {
+                        "value": "[parameters('subnets_subnet_name')]"
+                    }
+                }
+            }
+        },
+        {
+            "apiVersion": "2015-01-01",
+            "name": "master-resources2",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('_artifactsLocation'), 'master-resources2.json', parameters('_artifactsLocationSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "virtualMachines_vm_name": {
+                        "value": "[parameters('virtualMachines_vm_name')]"
+                    },
+                    "networkInterfaces_nic_name": {
+                        "value": "[parameters('networkInterfaces_nic_name')]"
+                    },
+                    "availabilitySets_avset_name": {
+                        "value": "[parameters('availabilitySets_avset_name')]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
