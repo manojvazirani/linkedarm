@@ -133,7 +133,7 @@
     "outputs": {
         "networkInterfaces_nic_id": {
             "type": "string",
-            "value": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic_name'))]"
+            "value": "test"
         }
     }
 }
