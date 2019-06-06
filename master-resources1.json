@@ -35,7 +35,7 @@
                 "resourceGuid": "2ea5f0d8-9217-4779-8855-d411d017fddc",
                 "ipAddress": "40.78.121.213",
                 "publicIPAddressVersion": "IPv4",
-                "publicIPAllocationMethod": "Dynamic",
+                "publicIPAllocationMethod": "Static",
                 "idleTimeoutInMinutes": 4,
                 "ipTags": []
             }
