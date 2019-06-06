@@ -131,6 +131,10 @@
         }
     ],
     "outputs": {
+        "pub_ip": {
+            "type": "string",
+            "value": "[reference(parameters('publicIPAddresses_ip_name')).ipAddress]"
+        },
         "networkInterfaces_nic_id": {
             "type": "string",
             "value": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nic_name'))]"
